@@ -16,7 +16,7 @@ namespace BBapp
             config.Routes.MapHttpRoute(
                 name: "Shiftcalculation",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { controller = "ShiftCalculation" , id = RouteParameter.Optional }
+                defaults: new { controller = "Shiftcalculation" , id = RouteParameter.Optional }
             );
         }
     }

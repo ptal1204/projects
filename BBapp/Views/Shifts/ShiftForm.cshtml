@@ -3,14 +3,81 @@
     ViewBag.Title = "ShiftForm";
 }
 
+<link href="../Content/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="../content/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
 <div class="container">
-	<form class="form-signin">
-		<h1 class="form-signin-heading text-muted"></h1>
-		<input type="text" class="form-control" placeholder="Shift A" required="" autofocus="">
-		<input type="text" class="form-control" placeholder="Shift B" required="">
-		<input type="text" class="form-control" placeholder="Shift C" required="">
-		<button class="btn btn-lg btn-primary" type="submit">
-			Submit
-		</button>
+	<form action="" class="form-horizontal" role="form">
+		<fieldset>
+			<legend>Test</legend>
+			<div class="form-group">
+				<label for="dtp_input3" class="col-md-2 control-label">Start Time</label>
+				<div class="input-group date form_time col-md-4" data-date="" data-date-format="MM dd yyyy hh:ii" data-link-field="dtp_input3" data-link-format="MM dd yyyy hh:ii">
+					<input class="form-control" size="16" type="text" value="" readonly>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+				</div>
+				<input type="hidden" id="dtp_input3" value="" /><br />
+			</div>
+			<div class="form-group">
+				<label for="dtp_input4" class="col-md-2 control-label">Bed Time</label>
+				<div class="input-group date form_time col-md-4" data-date="" data-date-format="MM dd yyyy hh:ii" data-link-field="dtp_input4" data-link-format="MM dd yyyy hh:ii">
+					<input class="form-control" size="16" type="text" value="" readonly>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+				</div>
+				<input type="hidden" id="dtp_input4" value="" /><br />
+			</div>
+			<div class="form-group">
+				<label for="dtp_input5" class="col-md-2 control-label">End Time</label>
+				<div class="input-group date form_time col-md-4" data-date="" data-date-format="MM dd yyyy hh:ii" data-link-field="dtp_input5" data-link-format="MM dd yyyy hh:ii">
+					<input class="form-control" size="16" type="text" value="" readonly>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+				</div>
+				<input type="hidden" id="dtp_input5" value="" /><br />
+			</div>
+			
+
+		</fieldset>
 	</form>
 </div>
+
+<script type="text/javascript" src="../scripts/jquery-1.10.2.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="../scripts/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+
+<script type="text/javascript">
+	$('.form_datetime').datetimepicker({
+		//language:  'en',
+		weekStart: 1,
+		todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+		showMeridian: 1
+	});
+	$('.form_date').datetimepicker({
+		language:  'en',
+		weekStart: 1,
+		todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+	});
+	$('.form_time').datetimepicker({
+		language:  'en',
+		weekStart: 1,
+		todayBtn:  0,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minuteStep: 60,
+		minView: 0,
+		maxView: 0,
+		forceParse: 0
+	});
+</script>
