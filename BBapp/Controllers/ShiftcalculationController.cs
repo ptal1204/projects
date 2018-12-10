@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -18,12 +19,29 @@ namespace BBapp.Controllers
 		{
 			ShiftRates rates = new ShiftRates();
 			var Midnite = DateTime.Today.AddDays(1);
+			var shiftEarned = 0;
 
 			try
 			{
-				var shiftEarned = ((shiftworked.Startshift.Subtract(shiftworked.Bedtime).Hours) * rates.StartToBeftime +
-							(shiftworked.Bedtime.Subtract(Midnite).Hours) * rates.BedtimeToMidnite +
-							(Midnite.Subtract(shiftworked.EndShift).Hours) * rates.ShiftToEnd);
+				if (shiftworked.Bedtime != DateTime.MinValue)
+				{
+					shiftEarned = ((shiftworked.Bedtime.Subtract(shiftworked.Startshift).Hours) * rates.StartToBedtime +
+									(Midnite.Subtract(shiftworked.Bedtime).Hours) * rates.BedtimeToMidnite +
+									(shiftworked.EndShift.Subtract(Midnite).Hours) * rates.ShiftToEnd);
+
+				}
+				else
+				{
+					if (shiftworked.EndShift < Midnite)
+					{
+						shiftEarned = ((shiftworked.EndShift.Subtract(shiftworked.Startshift).Hours) * rates.StartToBedtime);
+					}
+					else
+					{
+						shiftEarned = (Midnite.Subtract(shiftworked.Startshift).Hours) * rates.StartToBedtime +
+									  (shiftworked.EndShift.Subtract(Midnite).Hours) *rates.ShiftToEnd;
+					}
+				}
 
 				return Request.CreateResponse(HttpStatusCode.Accepted, shiftEarned.ToString("C0", CultureInfo.CurrentCulture));
 			}
