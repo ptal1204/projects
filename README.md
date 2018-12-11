@@ -4,7 +4,9 @@ with various rates being paid for different shifts. There are three different sh
 works and they are from 5:00 PM to bedtime, bedtime to midnight and midnight to end of shift which can not be later than 4:00 AM.
 
 This application uses an MVC API to calculate the wages earned based on hours enterd by the user via a front end web form.
-The application can be pulled and is ready to run with all references included using Visual Studio 2017. 
+The application can be pulled and is ready to run using Visual Studio 2017.
+
+Dependencies should be automatically referenced and downloaded from 'nuget' as contained within the config package. 
 
 
 
